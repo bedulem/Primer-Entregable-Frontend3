@@ -1,3 +1,6 @@
+import React, { useState } from "react";
+import Cabecera from "./components/Cabecera";
+import Listado from "./components/Listado";
 // El componente App es el padre de:
 // - Cabecera
 // - Listado
@@ -6,11 +9,16 @@
 // PROPS: App deberá pasar por props lo necesario a sus componenetes internos.
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  function sumar() {
+    setCount(count + 1);
+  }
 
   return (
     <div className="App">
-      <Cabecera />
-      <Listado />
+      <Cabecera cantidad={count}></Cabecera>
+      <Listado onSumar={sumar} />
     </div>
   );
 }

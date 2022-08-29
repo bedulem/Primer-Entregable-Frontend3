@@ -25,13 +25,25 @@ export default function Item(props) {
     <div className="producto">
       <h3>{props.nombre}</h3>
       <p>{props.descripcion}</p>
-      <h5>
-        En stock:
-        {stock === 0 ? <span>agotado</span> : stock}
-      </h5>
-      <button disabled={stock === 0 ? true : false} onClick={onClickHandler}>
-        {stock === 0 ? <span>SIN STOCK</span> : <span>COMPRAR</span>}
-      </button>
+
+      {stock === 0 ? (
+        <>
+          <h5>
+            En stock:
+            <span>agotado</span>
+          </h5>
+          <button disabled={true} onClick={onClickHandler}>
+            <span>SIN STOCK</span>
+          </button>
+        </>
+      ) : (
+        <>
+          <h5>En stock: {stock}</h5>
+          <button onClick={onClickHandler}>
+            <span>COMPRAR</span>
+          </button>
+        </>
+      )}
     </div>
   );
 }
